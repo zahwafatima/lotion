@@ -7,10 +7,223 @@ h5,
 h6,
 li,
 p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+h3 {
+    font-size: 13px;
+    color: #8a8b8b;
+}
+
+h2 {font-size: 25px;}
+
+.WritingPad1::placeholder {
+    font-style: italic;
+}
+.WritingPad1{
+    height: 650px;
+    width: 1050px;
+}
+
+input:focus{
+    outline: none;
+}
+
+input {
+    border: none;
+}
+
+#titleText {font-size: 25px;}
+
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
+
+/* App.js styling */
+.container {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.container:before {
+    content: "";
+    border: 0.75px solid #d3d6da;
+    align-self: stretch;
+    height: 800px;
+}
+
+.notesContainer {
+    align-items: center;
+    width: 25%;
+    order: -1;
+}
+
+.writingContainer {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+.writingSection {
+    height: 85%;
+    padding: 10px;
+}
+
+/* Notes styling */
+.NotesHeader {
+    display: flex;
+    height: 54px;
+    border-bottom: 1px solid #d3d6da;
+    width: 100%;
+    align-items: center;
+    text-align: left;
+    color: #333332;
+}
+
+.notesTitle {
+    width: 80%;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.notesPlus {
+    background: none;
+    border: none;
+    cursor: pointer;
+    height: 54px;
+    width: 65px;
+}
+
+.notesPlus:hover {
+    background-color: #4b445b;
+    color: white;
+}
+
+.NotesColumn{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: stretch;
+    
+}
+.singleNote{
+    border-bottom: 1px solid #d3d6da;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100px;
+}
+
+.singleNote.active{
+    background-color: #4b445b;
+    color: white !important;
+}
+
+.singleNoteButton{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: none;
+    height: 100px;
+}
+.singleNoteButton:hover {
+    background-color: #4b445b;
+    color: white;
+}
+
+/* Header.js styling */
+.AppHeader {
+    display: flex;
+    height: 80px;
+    border-top: 4px solid #4b445b;
+    border-bottom: 1px solid #d3d6da;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+}
+
+.menuSection {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    height: 80px;
+    width: 80px;
+    font-weight: bold;
+}
+
+.menuSection:hover {
+    background-color: #4b445b;
+    color: white;
+}
+
+.menuDisplay {
+    display: none;
+}
+
+.titleSection {
+    flex: 1;
+    padding-top: 10px;
+    color: #333332;
+}
+
+/* TextBox.js styling */
+#textBox {
+    align-items:  center;
+    display: flex;
+    padding: none;
+    width: 100%;
+    border-bottom: 1px solid #d3d6da;
+    padding-left: 10px;
+}
+
+#mainTitle {
+    width: 80%;
+    align-items: center;
+}
+#mainButtons{
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+}
+
+.saveDeleteButtons {
+    background: none;
+    border: none;
+    cursor: pointer;
+    height: 60px;
+    font-size: 15px;
+    padding: 10px;
+    width: 80px;
+}
+
+.saveDeleteButtons:hover{
+    background-color: #4b445b;
+    color: white;
+}
+
+.ql-toolbar.ql-snow{ 
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 2px solid #d3d6da !important;
+}
+.ql-container.ql-snow{ border: none !important;}
+
+#mainTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+*:disabled {
+    background-color: white !important;
+    font-weight: bold;
+    color: #333332 !important;
+}
+
