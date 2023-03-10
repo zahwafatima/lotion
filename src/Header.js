@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import './index.css';
+import './App.css';
 
 export default function Header() {
   let menuVisible = true;

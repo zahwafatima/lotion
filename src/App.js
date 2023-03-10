@@ -8,7 +8,7 @@ import NotesElement from './NotesElement';
 import TextBox from './TextBox';
 
 import uuid from 'react-uuid';
-import './index.css';
+import './App.css';
 
 const LOCAL_STORAGE_KEY = 'notesArray';
 

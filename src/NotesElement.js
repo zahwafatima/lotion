@@ -22,5 +22,5 @@ export default function NotesElement({ note, activeNote, setActiveNote }) {
       </div>
 
     </>
-  )
+  );
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useQuill } from 'react-quill';
+import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
 import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -8,20 +8,20 @@ import { useParams } from "react-router-dom";
 
 export default function TextBox({ notes, setNotes, activeNote, onUpdateNote, formatDate1, formatDate2 }) {
     var saveDisplaying = true;
-    const noteNameRef = useRef();
+    const noteNameRef = useRef()
     const { quill, quillRef } = useQuill();
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const dateTextActive = useRef();
     const placeholder = "Untitled";
 
     const toggleButton = () => {
-        saveDisplaying = !saveDisplaying
-
-        var save = document.getElementById('saveButton')
-        var edit = document.getElementById('editButton')
-        var dateTextActive = document.getElementById('dateTextActive')
-        var dateTextSaved = document.getElementById('dateTextSaved')
-        var title = document.getElementById('titleText')
+        saveDisplaying = !saveDisplaying;
+        
+        var save = document.getElementById('saveButton');
+        var edit = document.getElementById('editButton');
+        var dateTextActive = document.getElementById('dateTextActive');
+        var dateTextSaved = document.getElementById('dateTextSaved');
+        var title = document.getElementById('titleText');
 
         save.style.display = (saveDisplaying) ? 'block' : 'none';
         edit.style.display = (saveDisplaying) ? 'none' : 'block';
@@ -33,41 +33,44 @@ export default function TextBox({ notes, setNotes, activeNote, onUpdateNote, for
 
         dateTextSaved.innerHTML = formatDate1(dateTextActive.value)
         var quillToolbar = document.getElementsByClassName('ql-toolbar ql-snow');
-        for (var i = 0; i < quillToolbar.length; i++)
+        for (var i = 0; i < quillToolbar.length; i++){
             if (!saveDisplaying) {
                 quillToolbar[i].setAttribute('style', 'display:none !important;');
                 quill.enable(false);
-            }
-            else {
+            } else {
                 quillToolbar[i].setAttribute('style', 'display:block !important;');
                 quill.enable(true);
             }
+        }
     }
+      
 
     const handleDeleteNote = (idToDelete) => {
         const answer = window.confirm("Are you sure?");
-        if (answer)
-            setNotes(notes.filter((note) => note.id !== idToDelete))
+        if (answer) {
+            setNotes(notes.filter((note) => note.id !== idToDelete));
+            
+          }
     }
 
     const handleAddNote = (noteId) => {
         const name = noteNameRef.current.value;
-        if (name === '') return
-        var text = quill.getText();
+        if (name === '') return;
+        const text = quill.getText();
         onUpdateNote({
             id: noteId,
             name: name,
             date: formatDate1(dateTextActive.value),
             descr: text
-        })
-    }
+        });
+    };
 
     const onEditField = (key, value) => {
         onUpdateNote({
             ...activeNote,
             [key]: value,
             date: formatDate2(new Date()),
-        })
+        });
     }
 
     function formatDate(dateStr) {
@@ -101,9 +104,13 @@ export default function TextBox({ notes, setNotes, activeNote, onUpdateNote, for
             noteContent.innerHTML = activeNote.descr;
             quill.setText(noteContent.innerText);
         }
+        
     }, [activeNote, quill]);
     
-if (!activeNote) return
+
+    
+    
+if (!activeNote) return;
 
 return (
     <>
@@ -123,10 +130,12 @@ return (
                 </div>
             </div>
             <div className='editingSection'>
-                <div id='descrText' placeholder="Your Note Here" ref={quillRef} defaultValue={activeNote.descr} onBlur={(e) => onEditField("descr", quill.root.innerHTML)} />
+                {activeNote && (
+                    <div id='descrText' placeholder="Your Note Here" ref={quillRef} defaultValue={activeNote.descr} onBlur={(e) => onEditField("descr", quill.root.innerHTML)} />
+                )}
             </div>
-        </div>
 
+        </div>
     </>
 )
 }

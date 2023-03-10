@@ -81,7 +81,7 @@ a {
     width: 100%;
     align-items: center;
     text-align: left;
-    color: #333332;
+
 }
 
 .notesTitle {
@@ -120,7 +120,7 @@ a {
 
 .singleNote.active{
     background-color: #4b445b;
-    color: white !important;
+    color: white;
 }
 
 .singleNoteButton{
@@ -129,9 +129,22 @@ a {
     cursor: pointer;
     padding: none;
     height: 100px;
+    text-align: left;
+    font-size: 25px;
+    color: black;
 }
+.singleNoteButton p {
+    font-size: 15px;
+    margin: 0;
+    margin-top: 10px;
+}
+
 .singleNoteButton:hover {
     background-color: #4b445b;
+    color: white;
+}
+
+.singleNote.active .singleNoteButton {
     color: white;
 }
 
@@ -168,7 +181,7 @@ a {
 .titleSection {
     flex: 1;
     padding-top: 10px;
-    color: #333332;
+    
 }
 
 /* TextBox.js styling */
